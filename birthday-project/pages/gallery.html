@@ -1,0 +1,44 @@
+<!-- ============================================================
+     pages/gallery.html
+     PAGE 5 — Photo Gallery
+     Photos come from assets/photos/ folder.
+     Add photos to GALLERY_PHOTOS in data/content.js.
+     Edit heading / subtitle below directly.
+============================================================ -->
+
+<div class="gallery-inner">
+
+  <p class="eyebrow">Every picture tells the story</p>
+
+  <h2 class="display" style="font-size: clamp(2rem, 5vw, 3.2rem)">
+    Us, in photographs
+  </h2>
+
+  <div class="gold-line"></div>
+
+  <p class="italic-serif" style="font-size: 0.9rem; margin-bottom: 0">
+    The moments I keep coming back to. Click any photo to open it.
+  </p>
+
+  <!-- Photo grid (built by initGallery() in gallery.js) -->
+  <div class="gallery-grid" id="gallery-grid">
+    <!-- Populated dynamically -->
+  </div>
+
+</div>
+
+<!-- ── Lightbox (shared overlay) ── -->
+<div id="lightbox" onclick="lightboxBg(event)">
+
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+
+  <div class="lb-img-wrap">
+    <button class="lb-nav lb-prev" onclick="lbPrev()">&#8592;</button>
+    <img id="lb-img" src="" alt="" />
+    <button class="lb-nav lb-next" onclick="lbNext()">&#8594;</button>
+  </div>
+
+  <p id="lb-cap"></p>
+  <p class="lb-counter" id="lb-counter"></p>
+
+</div>

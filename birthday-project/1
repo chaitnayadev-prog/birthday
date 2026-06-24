@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For You 💛</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:wght@300;400&family=Caveat:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/story-page.css" />
+  <link rel="stylesheet" href="css/games.css" />
+  <link rel="stylesheet" href="css/reveal-page.css" />
+  <link rel="stylesheet" href="css/letters.css" />
+</head>
+<body>
+
+  <!-- ── Ambient gold particle field (behind everything) ── -->
+  <canvas id="particles"></canvas>
+
+  <!-- ── Page transition curtain ── -->
+  <div id="curtain">
+    <div id="curtain-edge"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       PAGE 1 — LOCK
+  ══════════════════════════════════════════════════════ -->
+  <div class="pg active" id="pg-lock">
+    <!-- Content: pages/lock.html -->
+    <div class="lock-inner">
+      <p class="eyebrow fade-up d1">A birthday story for my bbbu 🩵</p>
+      <h1 class="display lock-display fade-up d2">From "Class me<br>hai kya?" to<br>forever mine.</h1>
+      <p class="italic-serif lock-sub fade-up d3">Sept 2025 → 29 June 2026 · 10 months · 132,000+ messages</p>
+
+      <div class="cd-wrap fade-up d3">
+        <p class="cd-label">Until the day the world became more beautiful 💛</p>
+        <div class="cd-row">
+          <div class="cd-unit"><span class="cd-n" id="cd-d">—</span><span class="cd-l">Days</span></div>
+          <div class="cd-dot">·</div>
+          <div class="cd-unit"><span class="cd-n" id="cd-h">—</span><span class="cd-l">Hours</span></div>
+          <div class="cd-dot">·</div>
+          <div class="cd-unit"><span class="cd-n" id="cd-m">—</span><span class="cd-l">Min</span></div>
+          <div class="cd-dot">·</div>
+          <div class="cd-unit"><span class="cd-n" id="cd-s">—</span><span class="cd-l">Sec</span></div>
+        </div>
+      </div>
+
+      <div class="daily fade-up d4">
+        <p class="daily-day" id="d-day">Day —</p>
+        <p class="daily-text" id="d-msg">Loading today's message…</p>
+      </div>
+
+      <div class="teasers fade-up d5">
+        <div class="teaser"><span class="teaser-ico">📖</span><span class="teaser-lock">🔒</span><span class="teaser-txt">memories chapters moments</span><span class="teaser-lbl">Our Story</span></div>
+        <div class="teaser"><span class="teaser-ico">✉️</span><span class="teaser-lock">🔒</span><span class="teaser-txt">letters sealed words heart</span><span class="teaser-lbl">Letters</span></div>
+        <div class="teaser"><span class="teaser-ico">📸</span><span class="teaser-lock">🔒</span><span class="teaser-txt">photos moments gallery</span><span class="teaser-lbl">Gallery</span></div>
+        <div class="teaser"><span class="teaser-ico">🎡</span><span class="teaser-lock">🔒</span><span class="teaser-txt">games surprises kisses</span><span class="teaser-lbl">Surprises</span></div>
+      </div>
+      <p class="teasers-note fade-up d5">Some things are worth waiting for.</p>
+
+      <div class="fade-up d6">
+        <button class="btn-gold" id="cta-lock">Unlock My Heart 🔒</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       PAGE 2 — PASSWORD
+  ══════════════════════════════════════════════════════ -->
+  <div class="pg" id="pg-pw">
+    <!-- Content: pages/password.html -->
+    <div class="pw-wrap">
+      <p class="eyebrow fade-up d1">You made it.</p>
+      <h2 class="display pw-display fade-up d2">"If you've reached here,<br>it means you are<br>my forever."</h2>
+      <div class="gold-line centered fade-up d3"></div>
+      <p class="pw-hint fade-up d3">Hint: the dessert he ate without you 🍮</p>
+      <input class="pw-field fade-up d4" type="password" id="pw-in" placeholder="···" autocomplete="off" />
+      <p class="pw-err" id="pw-err"></p>
+      <button class="btn-gold fade-up d5" onclick="checkPw()">Open My Heart</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       PAGE 3 — OUR STORY (immersive scroll experience)
+  ══════════════════════════════════════════════════════ -->
+  <div class="pg" id="pg-story">
+
+    <!-- Side nav dots (desktop) -->
+    <nav class="story-sidenav" id="story-sidenav"></nav>
+
+    <!-- ══ COVER ══ -->
+    <div class="story-section story-cover" id="ss0">
+      <div class="cover-orb cover-orb-1"></div>
+      <div class="cover-orb cover-orb-2"></div>
+      <div class="cover-orb cover-orb-3"></div>
+
+      <div class="story-chars">
+        <div class="story-char rl" id="char-boy" onclick="bounceCh(this)">
+          <span class="char-em">🧑</span>
+          <span class="char-name char-name-boy">Chaitanya</span>
+        </div>
+        <span class="cover-heart rv">💙</span>
+        <div class="story-char rr" id="char-girl" onclick="bounceCh(this)">
+          <span class="char-em">👧</span>
+          <span class="char-name char-name-girl">Khushi</span>
+        </div>
+      </div>
+
+      <p class="cover-eyebrow-tag rv">a story narrated by chaitanya</p>
+      <h1 class="cover-headline rv">
+        From <span class="blue">"Class me<br>hai kya?"</span> to<br>
+        <span class="rose">Forever mine.</span>
+      </h1>
+      <p class="cover-byline rv">Sept 2025 → 29 June 2026 · 10 months · 132,000+ messages</p>
+      <div class="cover-stats-pill rv">A birthday story for my bbbu 🩵</div>
+      <button class="cover-scroll-cta rv" onclick="scrollToStorySection('ss1')">Read our story ↓</button>
+
+      <div class="scroll-hint-line">
+        <div class="scroll-line-bar"></div>
+        <span>scroll</span>
+      </div>
+    </div>
+
+    <!-- ══ CH 1: THE BEGINNING ══ -->
+    <div class="story-section bg-a" id="ss1">
+      <div class="story-section-inner">
+
+        <div class="ch-opener rv">
+          <p class="ch-opener-eyebrow">Chapter One</p>
+          <h2 class="ch-opener-title" style="color:#7ab0ff">The Boy Who Was<br>"Just A Classmate"</h2>
+          <p class="ch-opener-meta">September 4, 2025</p>
+        </div>
+
+        <div class="narrator-block rv">
+          <span class="narrator-em">🧑</span>
+          <p class="narrator-text">I'll be honest. When I first texted her, I wasn't thinking about love. I wasn't thinking about butterflies or late-night calls or nicknames that would turn into an entire dessert menu. I was thinking about attendance. <span class="hi">Just attendance.</span></p>
+          <p class="narrator-aside">— Chaitanya, looking back</p>
+        </div>
+
+        <div class="chat-window rv">
+          <div class="chat-date">04 September 2025 · 11:40 AM · Day 1</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>Class me hai kya ???</div>
+          <div class="cb cbr"><span class="cbn">Khushi</span>yesss</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>Sir hai ?? Attendance laga de..<br>Chaitanya — 2501060086</div>
+          <div class="cb cbr"><span class="cbn">Khushi</span>okiii</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>No problem</div>
+        </div>
+
+        <div class="narrator-block rv">
+          <p class="narrator-text">She said "okiii" and I said "no problem." That was it. A roll number and a thank you that almost didn't happen. I had no idea that this girl — the one covering my attendance — was going to become the most important person in my entire world. <span class="hi">Funny how that works.</span></p>
+        </div>
+
+        <div class="scene-card rv">
+          <div class="sc-label">What Chaitanya didn't know yet</div>
+          <div class="sc-title" style="color:#7ab0ff">She Was Already Curious 👀</div>
+          <p class="sc-body">A few hours later that same day, she asked <strong>"kl aayegaaa ???"</strong> He replied he'd come if his friends did. She said "okiii okii" — and immediately he asked <strong>"Tum aaoge??"</strong> She said she'd asked because she wanted to know if he'd be there. He told her to come. She said okieeeee. <strong>And neither of them realised this was already something.</strong></p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ CH 2: "I LOVE U AS A FRIEND" ══ -->
+    <div class="story-section bg-b" id="ss2">
+      <div class="story-section-inner">
+
+        <div class="ch-opener rv">
+          <p class="ch-opener-eyebrow">Chapter Two</p>
+          <h2 class="ch-opener-title" style="color:#ff9ab8">"I Love U As A Friend" 😂<br><span style="font-size:.6em;font-style:italic;font-weight:400;color:rgba(255,154,184,0.6)">The most unconvincing sentence ever typed</span></h2>
+          <p class="ch-opener-meta">September 9–20, 2025</p>
+        </div>
+
+        <div class="narrator-block rv">
+          <span class="narrator-em">🧑</span>
+          <p class="narrator-text">Within days, we were talking every evening. She was telling me I was a <span class="hi">"bandaa achaa"</span> and I was pretending not to care. She called me a yapper — someone who talks too much — and honestly, she wasn't wrong. But here's the thing about Khushi: she could out-yap me any day of the week. And I loved every single word.</p>
+        </div>
+
+        <div class="chat-window rv">
+          <div class="chat-date">09 September 2025 · 8:00 PM</div>
+          <div class="cb cbr"><span class="cbn">Khushi</span>tuu bndaa achaa h vaaisee 🥹🫷🏻</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>Vo muje pata hai. Kuch naya batao</div>
+          <div class="cb cbr"><span class="cbn">Khushi</span>i lovee u bolde theen 😭</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>I LOVE U AS A FRIEND 💞💞</div>
+          <div class="cb cbr"><span class="cbn">Khushi</span>i love h as aa bff 👉🏻👈🏻</div>
+        </div>
+
+        <div class="pull-quote rv">
+          <p class="pq-text">"Depression kuch nahi hota... Bolo. Koi judge kare toh vo uski problem hai."</p>
+          <p class="pq-attr">— Chaitanya to Khushi, Day 6 · The moment she knew he was different</p>
+        </div>
+
+        <div class="narrator-block rv">
+          <p class="narrator-text">She had told me she gets quiet in class, that she feels like she'll go into depression if she stays silent. And I said — without thinking — <span class="hi">"Depression kuch nahi hota. Bolo. Koi judge kare toh vo uski problem hai."</span> I don't know why I said it so easily. Maybe because even then, without fully knowing it, <span class="hi">I wanted her to feel safe.</span></p>
+        </div>
+
+        <div class="chat-window rv">
+          <div class="chat-date">09 September 2025 · 8:22 PM · The Yapper Moment</div>
+          <div class="cb cbr"><span class="cbn">Khushi</span>mrkeo bss bkk bkk krne se mtlb hotaa h 🥹</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>Yapper... Nahi hota bass imagination hai. Be positive.</div>
+          <div class="cb cbr"><span class="cbn">Khushi</span>🫷🏻🫷🏻🥹 yess yess</div>
+        </div>
+
+        <div class="narrator-block rv">
+          <p class="narrator-text">And then she said: <span class="hi">"bndi h terrii??"</span> — asking if I had a girlfriend. I told her I was single. She got curious. She said she'd follow me around until I told her. <span class="hi">She's been following me around ever since. Just not because of that anymore.</span></p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ CH 3: THE PROPOSAL ══ -->
+    <div class="story-section bg-d" id="ss3">
+      <div class="story-section-inner">
+
+        <div class="ch-opener rv">
+          <p class="ch-opener-eyebrow">Chapter Three</p>
+          <h2 class="ch-opener-title" style="color:#ff9ab8">Seventeen Days.<br>One Chaotic Confession.</h2>
+          <p class="ch-opener-meta">September 21, 2025 · 5:54 PM</p>
+        </div>
+
+        <div class="narrator-block rv">
+          <span class="narrator-em">🌸</span>
+          <p class="narrator-text">We had been talking for exactly 17 days. Seventeen days of good mornings that weren't called good mornings yet, of teasing each other about exams, of her calling me a yapper and me secretly keeping every message. I don't even know how we got to what happened next. <span class="hi">Nobody planned it. That's the truest thing about it.</span></p>
+        </div>
+
+        <div class="chat-window rv" style="max-width:440px">
+          <div class="chat-date">21 September 2025 · 5:54 PM · The Proposal That Made No Sense</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>Propose kario phele..</div>
+          <div class="cb cbr"><span class="cbn">Khushi</span>kaaisee 😭</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>Flowers dio.. Aur accept ho gaya tho kya karigi? 🌸</div>
+          <div class="cb cbr"><span class="cbn">Khushi</span>m kushii kushii accept krlungii 🥹🫷🏻</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>Aap ki beti ne propose kiya hai.. Reject kar du?? 😏</div>
+          <div class="cb cbr"><span class="cbn">Khushi</span>aaab m ni krriiii 🙂😭</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>Muje tho passand hai.. App bato ab 🥺</div>
+        </div>
+
+        <div class="narrator-block rv">
+          <p class="narrator-text">Read it again. Nobody technically proposed. Nobody technically said yes. We went in circles, we teased each other, we both pretended we weren't serious — and somehow in the middle of all that beautiful chaos, <span class="hi">we became us.</span> That's the most Khushi thing I can imagine.</p>
+        </div>
+
+        <div class="pull-quote rv" style="border-left-color:#7ab0ff">
+          <p class="pq-text" style="color:#c0d8ff">"Muje tho passand hai.. App bato ab 🥺"</p>
+          <p class="pq-attr">— Chaitanya · Five words that changed everything · 21 Sept 2025 · 5:54 PM</p>
+        </div>
+
+        <div class="scene-card rv">
+          <div class="sc-label">What happened next</div>
+          <div class="sc-title" style="color:#ff9ab8">The Nickname That Started It All 🍮</div>
+          <p class="sc-body">That same night, within hours, she was already calling him <strong>bbu</strong>. He said "Ok my bbuuu 🩵." She shot back "nii horiii meree bbbuu." Then he told her he'd gone to get rasmalai but hadn't brought her any. She was outraged. He laughed. <strong>The word "rasmalai" would follow them for 10 months and counting.</strong></p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ CH 4: MONTH BY MONTH ══ -->
+    <div class="story-section bg-a" id="ss4">
+      <div class="story-section-inner">
+
+        <div class="ch-opener rv">
+          <p class="ch-opener-eyebrow">Chapter Four</p>
+          <h2 class="ch-opener-title">Ten Months.<br>Ten Stories.</h2>
+          <p class="ch-opener-meta">September 2025 → June 2026</p>
+        </div>
+
+        <div class="narrator-block rv">
+          <span class="narrator-em">🧑</span>
+          <p class="narrator-text">People think love is made of grand moments. I used to think that too. But looking back at 10 months of messages — <span class="hig">132,000 of them</span> — I realise love is actually made of small, consistent, ordinary things. Let me take you through it, month by month.</p>
+        </div>
+
+        <!-- SEPTEMBER -->
+        <div class="month-divider rv"><div class="md-line"></div><div class="md-label">🌸 September 2025</div><div class="md-line"></div></div>
+        <div class="scene-card rv" style="border-color:rgba(255,154,184,.18)">
+          <div class="sc-label">Month 1 · The beginning</div>
+          <div class="sc-title" style="color:#ff9ab8">The Month We Found Each Other</div>
+          <p class="sc-body">It all happened so fast. September 4 — first message. September 9 — "I love u as a friend" (liar 😭). September 21 — the world's most chaotic proposal. By the end of the month, she was texting me at 6 AM when something felt off, and I was texting her "tune kha liya?" every single evening like clockwork. <strong>In 27 days, we went from strangers to us.</strong> That's the September miracle.</p>
+        </div>
+        <div class="chat-window rv">
+          <div class="chat-date">25 September 2025</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>Nahi tere bina koi team nahi. Tere bina koi event start nahi karunga 🥺</div>
+          <div class="cb cbr"><span class="cbn">Khushi</span>im bimaarr 🤧</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>Apke sapne mai kar duga pure.. Get well soon bbu</div>
+        </div>
+
+        <!-- OCTOBER -->
+        <div class="month-divider rv"><div class="md-line"></div><div class="md-label">🍂 October 2025</div><div class="md-line"></div></div>
+        <div class="scene-card rv">
+          <div class="sc-label">Month 2 · The 6 AM era begins</div>
+          <div class="sc-title" style="color:#f5c842">The Month She Woke Me Up At 6 AM</div>
+          <p class="sc-body">October 1st, 6:02 AM. I had slept at 4 AM. She texted: "bbuu." Then: "aaraa h yh niii." She hadn't said good morning, hadn't asked how I was. She just reached out, just to check. I grumbled. She laughed and said sorry. <strong>She'd been waking up just to reach me. I didn't know it then. I know it now.</strong></p>
+        </div>
+        <div class="chat-window rv">
+          <div class="chat-date">07 October 2025</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>Mai kya karta tere bina.. 🥺</div>
+          <div class="cb cbr"><span class="cbn">Khushi</span>bssss i miss uuu</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>I miss u more..</div>
+        </div>
+
+        <!-- NOVEMBER -->
+        <div class="month-divider rv"><div class="md-line"></div><div class="md-label">❄️ November 2025</div><div class="md-line"></div></div>
+        <div class="scene-card rv" style="border-color:rgba(122,176,255,.18)">
+          <div class="sc-label">Month 3 · The deep feelings hit</div>
+          <div class="sc-title" style="color:#7ab0ff">The Month I Realised How Much</div>
+          <p class="sc-body">November 1st. I sent her a morning message before she was even awake: <strong>"Tune pyar hi itna kiya ki itne din ki sari thakan release hogi.. Love u soo sooo much."</strong> Her love wasn't loud or dramatic. It was quiet and consistent. It was in the Python notes she stayed up till midnight to make for me. <strong>The month I really understood what she meant to me.</strong></p>
+        </div>
+        <div class="chat-window rv">
+          <div class="chat-date">08 November 2025</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>Jab tu mere pass nahi hoti na, mai tab teri choti chiti baat pe gussa ho jata hu.. kuki I miss u.</div>
+          <div class="cb cbr"><span class="cbn">Khushi</span>miss u too bbbuu 💙</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>Nahi tu janti hi nahi mai kitna miss karta hu..</div>
+        </div>
+
+        <!-- DECEMBER -->
+        <div class="month-divider rv"><div class="md-line"></div><div class="md-label">🎄 December 2025</div><div class="md-line"></div></div>
+        <div class="scene-card rv">
+          <div class="sc-label">Month 4 · Christmas &amp; missing her</div>
+          <div class="sc-title" style="color:#5de890">The Month She Asked For A Gift</div>
+          <p class="sc-body">December 25th. She texted "gifttt meraaa aaajkaaa 🎁." He asked what she wanted. She said: <strong>"jo merii princess dede 👉🏻👈🏻."</strong> He said earbuds. She said "hawww dbundhe hi nii." He laughed. Meanwhile he was already writing: <strong>"apka katna miss kara huu."</strong> The month of warm December evenings spent wishing she was closer.</p>
+        </div>
+
+        <!-- NEW YEAR -->
+        <div class="month-divider rv"><div class="md-line"></div><div class="md-label">🎆 December 31 → January 1, 2026</div><div class="md-line"></div></div>
+        <div class="pull-quote rv" style="border-left-color:var(--gold)">
+          <p class="pq-text" style="color:#f5e0b0">"God gave me the perfect gift this year 🎁✨. And u did everything for me. Love u aur ab tho words bhi nahi hai. Thank you for treating me like a princess."</p>
+          <p class="pq-attr">— Chaitanya to Khushi · 01 January 2026 · 12:49 AM</p>
+        </div>
+        <div class="chat-window rv">
+          <div class="chat-date">01 January 2026 · 12:48 AM · Happy New Year</div>
+          <div class="cb cbr"><span class="cbn">Khushi</span>hpppiestt new year bbbu 🩵🧿</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>Happy new yearrrrrr Princesses ✨🩵</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>God gave me the perfect gift this yearrr 🎁✨</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>Love u aur ab tho words bhi nahi hai 🤧</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>Ready for 2026 to create more cute and memorable moments with u 💕</div>
+        </div>
+        <div class="narrator-block rv">
+          <p class="narrator-text">I typed that at 12:49 AM. She had already sent her New Year message at 12:09 and I had missed it — asleep. When I woke up and saw it, I sent her that paragraph. I said "love u aur ab tho words bhi nahi hai." <span class="hi">And I meant every syllable.</span></p>
+        </div>
+
+        <!-- JANUARY -->
+        <div class="month-divider rv"><div class="md-line"></div><div class="md-label">❄️ January 2026</div><div class="md-line"></div></div>
+        <div class="scene-card rv">
+          <div class="sc-label">Month 5 · The cold month, warm conversations</div>
+          <div class="sc-title" style="color:#7ab0ff">January: Still Here. Still Us.</div>
+          <p class="sc-body">January came and nothing changed — except everything felt more settled. More certain. She would still message him before the bus to college. He would still check if she ate. <strong>The morning routine had become ritual.</strong> They had learned each other — the rhythms, the silences, the patterns of the other person.</p>
+        </div>
+
+        <!-- MARCH-APRIL -->
+        <div class="month-divider rv"><div class="md-line"></div><div class="md-label">🌸 March → April 2026</div><div class="md-line"></div></div>
+        <div class="scene-card rv">
+          <div class="sc-label">Month 7–8 · Exam season, still together</div>
+          <div class="sc-title" style="color:#ff9ab8">March-April: Papers and Python and Us</div>
+          <p class="sc-body">Exam season hit hard. She stayed up solving Python practicals. He sent adjacency list implementations and DSA notes at 9 AM. She asked brain-related project name suggestions. He shared resources. <strong>They became each other's study partners, support systems, and midnight sanity checks.</strong></p>
+        </div>
+
+        <!-- MAY-JUNE -->
+        <div class="month-divider rv"><div class="md-line"></div><div class="md-label">☀️ May → June 2026</div><div class="md-line"></div></div>
+        <div class="scene-card rv">
+          <div class="sc-label">Month 9–10 · Still going, still us</div>
+          <div class="sc-title" style="color:var(--gold)">June: And Still, Every Morning</div>
+          <p class="sc-body">June 1st, 6:03 AM: <strong>"gudmrngg bbbbu. Uthhhjaooo. ni toh bus nikl jaygiii."</strong> He replied at 6:40: "Gud morning. Babyy." Ten months in. She was still waking up early to make sure he didn't miss his bus. He was still worried she'd eaten. She was still "mines rasmalai." He was still "loce u moreee." <strong>Some things don't change. The best things never do.</strong></p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ CH 5: WHAT MAKES THEM THEM ══ -->
+    <div class="story-section bg-e" id="ss5">
+      <div class="story-section-inner">
+
+        <div class="ch-opener rv">
+          <p class="ch-opener-eyebrow">Chapter Five</p>
+          <h2 class="ch-opener-title">The Things That Make<br>Them <span style="color:#ff9ab8;font-style:italic">Them.</span></h2>
+          <p class="ch-opener-meta">Special moments · Special patterns · Special us</p>
+        </div>
+
+        <!-- GOODNIGHT -->
+        <div class="scene-card rv">
+          <div class="sc-label">🌙 Every. Single. Night. Without fail.</div>
+          <div class="sc-title">The Goodnight Ritual</div>
+          <p class="sc-body">Every night ends the same way. She says "No phones. Aab jaao. Gudnight bbbu." He sends three more messages after that. She pretends to be annoyed. He says "love u the most babyyyy 🩵." She says "loce u moreee." <strong>They've done this for 300+ nights and haven't gotten bored once.</strong></p>
+        </div>
+        <div class="chat-window rv">
+          <div class="chat-date">14 June 2026 · Midnight</div>
+          <div class="cb cbr"><span class="cbn">Khushi</span>Gudnight Bbbuuu. No phoness. Aaab. 🌙</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>Bas aapke sapne dhek ke soo jauga 😎</div>
+          <div class="cb cbr"><span class="cbn">Khushi</span>Hahaha babbaabie 😭 aaab jaaao!</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>Love u the most babyyyy 🩵💞</div>
+          <div class="cb cbr"><span class="cbn">Khushi</span>Lovee uui meraaa babababu 🩵🤭❤️🫶🏻</div>
+        </div>
+
+        <!-- MORNING MESSAGE -->
+        <div class="scene-card rv" style="margin-top:0.5rem">
+          <div class="sc-label">☀️ He said "koi lamba message nahi bhejunga." Liar.</div>
+          <div class="sc-title">The Good Morning That's Actually A Love Letter</div>
+          <p class="sc-body">He promised short messages. He always writes paragraphs. On June 14th, 10:15 AM, he sent: "Good morning, Babyyyy ❤️☀️ Aaj koi lamba message nahi bhejunga 🤭 Bas itna bolna tha ki mujhe bahut accha lagta hai ki meri life me tu hai 🥺🩵 Tu sirf meri girlfriend nahi hai, tu meri best friend bhi hai 😘 Love you, Babyyy 💞"</p>
+        </div>
+        <div class="chat-window rv">
+          <div class="chat-date">14 June 2026 · 10:15 AM</div>
+          <div class="cb cbl"><span class="cbn">Chaitanya</span>Good morning, Babyyyy ❤️☀️<br><br>Aaj koi lamba message nahi bhejunga 🤭<br>Bas itna bolna tha ki mujhe bahut accha lagta hai ki meri life me tu hai 🥺🩵<br>Tu sirf meri girlfriend nahi hai, tu meri best friend bhi hai 😘<br>Love you, Babyyy 💞</div>
+          <div class="cb cbr"><span class="cbn">Khushi</span>Hahahhaaa 😭 Bsss teri bbbu. Ur teri bffff. Ur kise kiii nii haianaaa 🫣🤭🩵</div>
+        </div>
+
+        <!-- NICKNAMES -->
+        <div class="narrator-block rv" style="margin-top:0.75rem">
+          <span class="narrator-em">🍮</span>
+          <p class="narrator-text">The Nickname Evolution — from one dessert to an entire menu</p>
+        </div>
+        <div class="two-col rv">
+          <div class="tci"><span class="tci-icon">🐸</span><div class="tci-title">Mandak</div><p class="tci-body">She called him mandak. He said "mera mandak 😭🩵." Green, jumping, adorable — honestly accurate.</p></div>
+          <div class="tci"><span class="tci-icon">🍮</span><div class="tci-title">Rasmalai</div><p class="tci-body">Started with him eating rasmalai without her. Became the ultimate nickname. "Gudnight mines rasmalaii 🍮"</p></div>
+          <div class="tci"><span class="tci-icon">🍯</span><div class="tci-title">Gulabjamun</div><p class="tci-body">"Meraaa gulaabjaamunn 🍯" — sweet, soft, best given without warning.</p></div>
+          <div class="tci"><span class="tci-icon">💙</span><div class="tci-title">Bbbu → Babababu</div><p class="tci-body">Started as "bbu," peaked at "babababu." No one is counting the b's anymore.</p></div>
+        </div>
+
+        <!-- TUNE KHA LIYA -->
+        <div class="scene-card rv">
+          <div class="sc-label">🍽️ Asked 847 times. Answered 847 times.</div>
+          <div class="sc-title">"Tune Kha Liya??"</div>
+          <p class="sc-body">From September 11th — literally Day 8 — Chaitanya was asking if she'd eaten. Then she started asking him. It became their language for <em>I care. I'm thinking of you. You exist to me.</em> <strong>He never once let her go to sleep without checking. She never once let him skip a meal without at least asking.</strong> Food is love, in their language.</p>
+        </div>
+
+        <!-- STATS -->
+        <div class="stat-row rv">
+          <div class="stat-card"><div class="stat-num">132K+</div><div class="stat-label">Messages Sent</div></div>
+          <div class="stat-card"><div class="stat-num">300+</div><div class="stat-label">Goodnights</div></div>
+          <div class="stat-card"><div class="stat-num">17</div><div class="stat-label">Days to Fall</div></div>
+          <div class="stat-card"><div class="stat-num">∞</div><div class="stat-label">Times "bbu"</div></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ CH 6: WHAT CHAITANYA FEELS ══ -->
+    <div class="story-section bg-d" id="ss6">
+      <div class="story-section-inner">
+
+        <div class="ch-opener rv">
+          <p class="ch-opener-eyebrow">Chapter Six · Narrated by Chaitanya</p>
+          <h2 class="ch-opener-title" style="color:#ff9ab8">What I Actually<br>Feel. Honestly.</h2>
+          <p class="ch-opener-meta">Everything he's never quite said out loud — until now</p>
+        </div>
+
+        <div class="narrator-block rv">
+          <span class="narrator-em">🧑</span>
+          <p class="narrator-text">I don't say these things well in real life. I get awkward. I make jokes when I should say serious things. But let me try — just once, for her birthday — to be honest about what she actually means to me.</p>
+        </div>
+
+        <div class="pull-quote rv">
+          <p class="pq-text">"Apke liye tho meri jaan hasir hai."</p>
+          <p class="pq-attr">— Chaitanya · October 2025 · He meant it</p>
+        </div>
+
+        <div class="scene-card rv">
+          <div class="sc-label">What Chaitanya wants Khushi to know · 01</div>
+          <div class="sc-title">You changed what "ordinary" means to me</div>
+          <p class="sc-body">Before you, I thought love had to be big. Dramatic. A grand gesture, a perfect moment. Then you came along and made a Tuesday at 6 AM feel like something worth getting up for. You asked "aaraa h yh niii?" and somehow that mattered more than anything beautiful I had read or watched. <strong>You made the ordinary extraordinary just by being in it.</strong></p>
+        </div>
+
+        <div class="scene-card rv">
+          <div class="sc-label">What Chaitanya wants Khushi to know · 02</div>
+          <div class="sc-title">I miss you in a way I can't explain</div>
+          <p class="sc-body">"Jab tu mere pass nahi hoti na, mai tab teri choti chiti baat pe gussa ho jata hu kuki I miss u." I wrote that in November. I still mean it. When you're not there, everything feels slightly off — like a song missing one instrument. <strong>You are the part of the day I look forward to. Every day. Even the annoying ones where you call me mandak.</strong></p>
+        </div>
+
+        <div class="scene-card rv">
+          <div class="sc-label">What Chaitanya wants Khushi to know · 03</div>
+          <div class="sc-title">You are my best friend, not just my girlfriend</div>
+          <p class="sc-body">I said it on June 14th — "Tu sirf meri girlfriend nahi hai, tu meri best friend bhi hai." And I didn't plan to say it. It came out because it was true. <strong>You're the first person I want to tell things to. Good things, bad things, the thing that happened on the way to college, the stupid thought I had at 2 AM. You are my person.</strong></p>
+        </div>
+
+        <div class="scene-card rv">
+          <div class="sc-label">What Chaitanya wants Khushi to know · 04</div>
+          <div class="sc-title">You made 2025 the best year of my life</div>
+          <p class="sc-body">At 12:49 AM on New Year's, I wrote: <strong>"God gave me the perfect gift this year."</strong> That was you. You took 2025 — which was supposed to be just first year of college — and turned it into the year I fell in love with my best friend. I don't have words for that. I just have "loce u moreee."</p>
+        </div>
+
+        <div class="narrator-block rv">
+          <span class="narrator-em">🧑</span>
+          <p class="narrator-text">Khushi — you call me mandak and rasmalai and gulabjamun and babbabie. You say "no phones aab jaao" and then text three more times. You make Python notes at midnight and don't tell me until morning. You check if I ate before you check if I'm okay. <span class="hi">You are the kind of person who makes the people around them better without even trying.</span> And on your birthday, I just want you to know — you made me better. You really did. 💙</p>
+        </div>
+
+        <!-- TIMELINE -->
+        <div class="tl-strip rv" style="margin-top:0.5rem">
+          <div class="tl-row">
+            <div class="tl-date-col"><div class="tl-badge">04 Sep '25</div></div>
+            <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-event">First message ever</div><div class="tl-desc">"Class me hai kya???" — a roll number and a thank you.</div></div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-date-col"><div class="tl-badge">09 Sep '25</div></div>
+            <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-event">"I love u as a friend" 💀</div><div class="tl-desc">Day 6. Already. Nobody believed it then either.</div></div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-date-col"><div class="tl-badge">21 Sep '25</div></div>
+            <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-event">The Chaotic Proposal</div><div class="tl-desc">"Muje tho passand hai.. App bato ab 🥺" — and that was that.</div></div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-date-col"><div class="tl-badge">01 Nov '25</div></div>
+            <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-event">"Tune pyar hi itna kiya"</div><div class="tl-desc">The morning message that made her stop and feel it all.</div></div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-date-col"><div class="tl-badge">01 Jan '26</div></div>
+            <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-event">New Year · "God gave me the perfect gift"</div><div class="tl-desc">12:49 AM. He meant every word of that long message.</div></div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-date-col"><div class="tl-badge">14 Jun '26</div></div>
+            <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-event">"Tu meri best friend bhi hai"</div><div class="tl-desc">Ten months in. Still saying it like it's new. Because it is.</div></div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-date-col"><div class="tl-badge" style="background:rgba(245,200,66,.1);border-color:rgba(245,200,66,.3);color:#f5c842">29 Jun '26</div></div>
+            <div class="tl-line-col"><div class="tl-dot" style="background:var(--gold)"></div><div class="tl-event" style="color:#f5c842">Khushi's Birthday 🎂</div><div class="tl-desc">The day this whole story was made for. Happy Birthday, bbbu.</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- end #pg-story -->
+
+  <!-- ══════════════════════════════════════════════════════
+       PAGE 4 — LETTERS (inline accordion, no modal)
+  ══════════════════════════════════════════════════════ -->
+  <div class="pg" id="pg-letters">
+    <div class="letters-page-inner">
+
+      <!-- Header -->
+      <div class="lp-header">
+        <p class="lp-tag">From Chaitanya · With everything he has</p>
+        <h1 class="lp-heading">Letters for Every Feeling.</h1>
+        <p class="lp-sub">Khush ko — jab bhi zarurat ho 💙</p>
+      </div>
+
+      <div class="lp-list">
+
+        <!-- ── LETTER 1: WHEN SAD ── -->
+        <div class="lp-card lp-c1" id="lp1">
+          <div class="lp-env" onclick="lpToggle('lp1')">
+            <div class="lp-seal">💌</div>
+            <div class="lp-env-info">
+              <div class="lp-when">Open when you're sad</div>
+              <div class="lp-env-title">A Letter for Your Hard Days</div>
+            </div>
+            <div class="lp-arrow">›</div>
+          </div>
+          <div class="lp-body">
+            <div class="lp-divider"></div>
+            <div class="lp-date">For whenever that heavy feeling comes — tu jaanti hai woh wala feeling</div>
+            <div class="lp-text">
+              <p>Bbbu,</p>
+              <p>Agar tu yeh letter padh rahi hai, toh shayad aaj ka din theek nahi raha. Aur main chahta hoon ki tu ek cheez jaane — <span class="hi">tujhe theek hone ki performance nahi karni hai abhi.</span> Koi nahi dekh raha. Bas tu aur yeh words hain.</p>
+              <p>Mujhe yaad hai woh din jab tune kaha tha ki tu class mein chup rehti hai, ki andar kuch ghut raha tha. Aur maine kaha tha — <span class="hi">"depression kuch nahi hota. Bolo. Koi judge kare toh vo uski problem hai."</span> Maine woh tab bola tha. Main woh aaj bhi kehta hoon. Sirf farak itna hai ki aaj main zyada samajhta hoon ki kehna aur feel karna alag hote hain.</p>
+              <p>Tu kabhi kabhi chup ho jaati hai. Main notice karta hoon. Jab teri "haa" chhoti ho jaati hai, jab messages thodi der baad aate hain, jab tu seedha reply karti hai bina ek bhi emoji ke — tab main jaanta hoon kuch hai. <span class="hi">Aur tab bhi main tere liye hoon.</span></p>
+              <p>Tune mujhse ek baar bola tha ki <span class="hi">"tuu bndaa achaa h vaaisee 🥹"</span> — aur maine mazak kiya. Par sach mein, bbbu — tu jo karti hai, woh "accha" hone se bahut aage hai. Tu meri life mein aake mujhe khud se zyada khud ki tarah feel karaati hai.</p>
+              <p>Aaj kha lena. Pani pi lena. Aur aaj ki raat jab "gudnight bbbu" likhegi — tab jaanna ki woh sirf ek goodnight nahi hai. Woh mera yeh kehna hai ki <span class="hi">main kal bhi yahan hoon. Aur parso bhi.</span></p>
+            </div>
+            <div class="lp-sign">Hamesha tera,<strong>Chaitanya 🩵</strong></div>
+          </div>
+        </div>
+
+        <!-- ── LETTER 2: WHEN MISSING ME ── -->
+        <div class="lp-card lp-c2" id="lp2">
+          <div class="lp-env" onclick="lpToggle('lp2')">
+            <div class="lp-seal">🫂</div>
+            <div class="lp-env-info">
+              <div class="lp-when">Open when you miss me</div>
+              <div class="lp-env-title">I'm Right Here, Bbbu</div>
+            </div>
+            <div class="lp-arrow">›</div>
+          </div>
+          <div class="lp-body">
+            <div class="lp-divider"></div>
+            <div class="lp-date">Jab door lagoon — tab yeh padh lena</div>
+            <div class="lp-text">
+              <p>Meri jaan,</p>
+              <p>Tu miss kar rahi hai mujhe. Aur main chahta hoon tu jaane — <span class="hb">main bhi kar raha hoon.</span> Ek alag tarah se. Ek aisi tarah se jo main aksar kehta nahi. Par aaj kehta hoon.</p>
+              <p>November mein tune ek baar bola tha <span class="hb">"bssss i miss uuu"</span> — aur main samajha tha. Par jo main nahi bol paya tha woh yeh hai: jab tu miss karne ka message bhejti hai, tab main ek second ke liye phone haath mein liye ruk jaata hoon. Sirf uss feeling ko feel karne ke liye. Ki koi hai duniya mein jo mere baare mein sochti hai itna. <span class="hb">Yeh feeling chhoti nahi hai, bbbu.</span></p>
+              <p>Yaad hai October waala din? Tu 6 baje uthke mujhe call karti thi — main uthta tha aur bolita tha "subha subha phn, na gud morning na kuch" — par andar main hamesha thoda muskurata tha. Kyunki tu itni subah uthi sirf isliye ki mujh tak pahunche. Yeh chhoti si cheez — yeh mujhe yaad rehti hai.</p>
+              <p>Aaj agar tu miss kar rahi hai mujhe, toh yeh jaann — <span class="hb">hum ek hee waqt mein ek hi chaahat mein rehte hain.</span> Tu jis moment mein mujhe miss karti hai, us moment mein main shayad phone haath mein liye teri koi purani baatein padh raha hoon. Ya yaad kar raha hoon woh din. Ya bas — feel kar raha hoon ki tu hai. Aur yeh enough hai.</p>
+              <p>Aaj raat "gudnight bbbu" likh dena. Woh do words — <span class="hb">woh hum dono ka ek hi waqt mein ek hi jagah hona hai.</span> Chahe kitni bhi doori ho beech mein.</p>
+            </div>
+            <div class="lp-sign">Tere saath — hamesha,<strong>Tera bbu 💙</strong></div>
+          </div>
+        </div>
+
+        <!-- ── LETTER 3: WORST DAY ── -->
+        <div class="lp-card lp-c3" id="lp3">
+          <div class="lp-env" onclick="lpToggle('lp3')">
+            <div class="lp-seal">🌧️</div>
+            <div class="lp-env-info">
+              <div class="lp-when">Open on your worst day</div>
+              <div class="lp-env-title">You Are Not Alone in This</div>
+            </div>
+            <div class="lp-arrow">›</div>
+          </div>
+          <div class="lp-body">
+            <div class="lp-divider"></div>
+            <div class="lp-date">Woh din jab sab kuch bahut zyada lagta ho — tab yeh padh</div>
+            <div class="lp-text">
+              <p>Khushi,</p>
+              <p>Aaj woh din hai. Woh wala din — jab andar se kuch toot raha lagta hai aur bahar se sab normal dikhna padta hai. Jab thaka hua mann aur thaka hua dil dono ek saath bhaari lagte hain. Main jaanta hoon yeh din kaisa lagta hai. <span class="hi">Aur main chahta hoon ki tu jaane — aaj woh din tujhe akele nahi milna chahiye tha.</span></p>
+              <p>Humari pehli baatein yaad hain mujhe. Tune bola tha ki tu chup rehti hai class mein, ki andar kuch hai jo bahar nahi aata. Aur maine bola tha — bolo. Judge kare toh uski problem. Aaj main wahi bol raha hoon. Sirf zyada zyada seriously. <span class="hi">Tujhe kisi ke liye theek hone ki zarurat nahi hai — mujhse toh bilkul nahi.</span></p>
+              <p>Jab tere saath bura hota hai, jab raat ko kuch ghumta rehta hai mann mein aur neend nahi aati — main chahta hoon tu woh phone uthaye. Main chahta hoon tu likhde sirf "bbbu" — aur main samajh jaunga. <span class="hi">Kyunki 10 mahine mein maine seekha hai ki teri choti choti baatein bhi badi kehti hain.</span></p>
+              <p>Tune ek baar Python notes raat bhar banaye mere liye. Tune kabhi subah 6 baje sirf isliye uthke text kiya ki main miss na karu. Tune "tune kha liya?" tab bhi pucha jab tere khud ke andar storm chal raha tha. <span class="hi">Tu duniya ko deti rehti hai jab khud khaali hoti hai — aur aaj, is letter ke zariye, main chahta hoon kuch tujhe wapas milna chahiye.</span></p>
+              <p>Aaj kuch nahi chahiye tujhse. Koi solution nahi. Koi "okay" nahi bolna. Bas yeh jaanna — <span class="hi">main yahan hoon. Aaj bhi. Aur aaj ke baad bhi.</span></p>
+            </div>
+            <div class="lp-sign">Tera hoon — bilkul,<strong>Chaitanya 🩵</strong></div>
+          </div>
+        </div>
+
+        <!-- ── LETTER 4: WHEN LOST ── -->
+        <div class="lp-card lp-c4" id="lp4">
+          <div class="lp-env" onclick="lpToggle('lp4')">
+            <div class="lp-seal">🌿</div>
+            <div class="lp-env-info">
+              <div class="lp-when">Open when you feel lost</div>
+              <div class="lp-env-title">Come Home to Yourself</div>
+            </div>
+            <div class="lp-arrow">›</div>
+          </div>
+          <div class="lp-body">
+            <div class="lp-divider"></div>
+            <div class="lp-date">Jab direction nahi pata — kahan jaana hai, kya banana hai, kaun hoon</div>
+            <div class="lp-text">
+              <p>Bbbu,</p>
+              <p>Kuch din aisa lagta hai ki sab log jaante hain kahan ja rahe hain — aur tu wahan khadi hai, sochti hai ki main yahan kyun hoon, kya kar rahi hoon, sahi hai ya nahi. <span class="hg">Yeh feeling real hai. Aur yeh feeling kuch galat nahi karti tujhe.</span></p>
+              <p>Par main tujhe kuch bataana chahta hoon — jo main bahut close se dekh ke jaanta hoon. Tu woh ladki hai jo raat bhar Python notes banati hai sirf isliye ki koi aur theek reh sake. Tu woh ladki hai jo subah 6 baje uthke check karti hai ki sab theek hain. Tu woh ladki hai jo bhaari din ke baad bhi <span class="hg">"lovee uui meraaa babababu 🩵"</span> likh ke sooti hai. <span class="hg">Is insaan ko kho jaane ka dar nahi hona chahiye. Kyunki yeh insaan khud mein ek ghar hai.</span></p>
+              <p>Lost feel karna iska matlab yeh nahi ki tu kho gayi. Iska matlab yeh hai ki tu kuch dhundh rahi hai jo abhi dikh nahi raha. Aur main chahta hoon tu yeh jaane — <span class="hg">jab bhi tu khud se thodi door ho jaaye, mere paas aa.</span> Main tujhe yaad dilata rahunga kaun hai tu. Kitni saalon tak.</p>
+              <p>January mein mujhe yaad hai, jab tune kaha tha ki kuch direction nahi pata — aur maine bola tha <span class="hg">"nahi tere bina koi team nahi."</span> Main woh aaj bhi kehta hoon. Sirf iss baar, uss "team" mein tujhe bhi include karta hoon. <span class="hg">Apni team mein khud bhi reh, bbbu.</span></p>
+              <p>Ghar woh jagah nahi hai jahan tere kapde hain ya jahan tu rehti hai. Ghar woh jagah hai jahan tu khud hoti hai — poori tarah. Aur main chahta hoon ki tu hamesha wahan pahunche. Mujhse door bhi, mujhse paas bhi — <span class="hg">apne andar.</span></p>
+            </div>
+            <div class="lp-sign">Tujhe yaad dilata rahunga — hamesha,<strong>Tera mandak 🐸💙</strong></div>
+          </div>
+        </div>
+
+        <!-- ── LETTER 5: OPEN ANYTIME ── -->
+        <div class="lp-card lp-c5" id="lp5">
+          <div class="lp-env" onclick="lpToggle('lp5')">
+            <div class="lp-seal">💜</div>
+            <div class="lp-env-info">
+              <div class="lp-when">Open any time</div>
+              <div class="lp-env-title">Everything I Never Said</div>
+            </div>
+            <div class="lp-arrow">›</div>
+          </div>
+          <div class="lp-body">
+            <div class="lp-divider"></div>
+            <div class="lp-date">Koi reason nahi chahiye — bas padh lena</div>
+            <div class="lp-text">
+              <p>Meri Khushi,</p>
+              <p>Main aksar kehta hoon "loce u moreee" — aur haan, woh typo hai, par woh sach hai. Main jo feel karta hoon woh kabhi kabhi words se bada hota hai aur tab main kuch chhota sa likhta hoon. <span class="hi">Par aaj lamba likhna hai. Kyunki kuch cheezein bahut zyada der se andar baith gayi hain.</span></p>
+              <p>Maine New Year par likha tha — <span class="hi">"God gave me the perfect gift this year."</span> Woh tu thi. Par jo main nahi bol paya tha woh yeh hai: tu sirf ek "perfect gift" nahi hai. Tu woh insaan hai jisne mujhe sikhaya ki khud ke baare mein better sochoon. Tu woh reason hai ki main subah uthke phone check karta hoon — not for news, not for notifications — <span class="hi">sirf tere liye.</span></p>
+              <p>Tu mujhe mandak bolti hai. Rasmalai bolti hai. Gulabjamun bolti hai. Pehle hassi aati thi, par ab jaanta hoon — <span class="hi">yeh woh cheezein hain jo tu sirf un logon ko bolti hai jo teri duniya mein hain.</span> Aur main teri duniya mein hoon — yeh ehsaas koi cheez se compare nahi hoti.</p>
+              <p>Tune kabhi ek raat Python notes banaye mere liye. Tune "tune kha liya?" tab bhi pucha jab teri khud ki tabiyat kharab thi. Tune woh mornings diye jo dene ki zarurat nahi thi. <span class="hi">Tu aise deti hai jaise tujhe pata hi nahi ki yeh extraordinary hai.</span> Par hai, bbbu. Yeh extraordinary hai.</p>
+              <p>Aur ek baat — jo main roz kehna chahta hoon par aksar sirf "hmm" ya "haa" mein keh deta hoon: <span class="hi">Tu sirf meri girlfriend nahi hai. Tu meri best friend hai. Meri team hai. Mera safe place hai. Aur main chahta hoon ki tu hamesha rahe — woh jagah jahan tujhe sirf tu hona padta hai, kuch aur nahi.</span></p>
+              <p>Yeh sab likha hai kyunki kabhi kabhi "gudnight bbbu. no phones. aab." ke baad bhi kuch rehta hai dil mein jo bahar nahi aata. Aaj woh bahar aaya.</p>
+            </div>
+            <div class="lp-sign">Tujhse — poori tarah,<strong>Tera Chaitanya 💜🩵</strong></div>
+          </div>
+        </div>
+
+        <!-- ── LETTER 6: BIRTHDAY ── -->
+        <div class="lp-card lp-c6" id="lp6">
+          <div class="lp-env" onclick="lpToggle('lp6')">
+            <div class="lp-seal">🎂</div>
+            <div class="lp-env-info">
+              <div class="lp-when">Open on your birthday 🎂</div>
+              <div class="lp-env-title">Happy Birthday, My Bbbu</div>
+            </div>
+            <div class="lp-arrow">›</div>
+          </div>
+          <div class="lp-body">
+            <div class="lp-divider"></div>
+            <div class="lp-date">29 June — Sirf tera din</div>
+            <div class="lp-text">
+              <p>Meri Khushi,</p>
+              <p>Aaj tera birthday hai. Aur main chahta hoon ki aaj ke din teri aankhen padh lein woh sab jo main roz feel karta hoon par zyada baar kehta nahi.</p>
+              <p>4 September 2025 ko maine ek roll number bheja tha. 2501060086. Attendance ke liye. Uss waqt mujhe nahi pata tha ki yeh number meri life ka ek turning point hoga. Ki woh "okiii" karne waali ladki ek din meri <span class="hg">rasmalai, mandak, gulabjamun, babbabie, bbbu — sab kuch ban jaayegi.</span></p>
+              <p>17 din mein humne kuch aisa decide kar liya tha jo sirf humara samajh aata hai — koi official scene nahi tha, koi perfect words nahi the, sirf ek chaotic conversation thi jisme maine bola <span class="hg">"Muje tho passand hai.. App bato ab 🥺"</span> aur tu officially meri ho gayi. <span class="hg">Aaj 10 mahine baad bhi woh moment meri favourite memory hai.</span></p>
+              <p>Teri baat karta hoon — tu woh hai jo subah 6 baje uthke mujhe reach karti hai. Tu woh hai jo "tune kha liya?" poochhe bina reh nahi sakti. Tu woh hai jo raat ko "no phones. aab." kehti hai aur phir khud teen aur messages bhejti hai. <span class="hg">Tu woh hai jo apni sari thakaan ke saath bhi mera khayal rakhti hai. Aur yeh mujhe hamesha toot deta hai — ek achhe tarike se.</span></p>
+              <p>New Year pe 12:49 AM pe likha tha — <span class="hg">"God gave me the perfect gift this year."</span> Woh tu thi. Aaj bhi wahi hoon. Iss saal, agli saal, aur uske baad ki saari saalo mein — <span class="hg">tu woh gift rahegi jo maine deserve nahi kiya par somehow mil gayi.</span></p>
+              <p>Aaj apna birthday properly celebrate karna. Khaana khana. Khush rehna. Aur raat ko jab "gudnight bbbu" likhegi — tab jaanna ki is baar main sirf goodnight nahi bol raha. Main bol raha hoon — <span class="hg">happy birthday, meri Khushi. Aaj se ek saal aur tere saath hoga — aur main ready hoon us saal ke liye, poori tarah.</span></p>
+              <p>Tu sirf meri girlfriend nahi hai. Tu meri best friend hai. Mera ghar hai. Meri har baar ki wapsi hai.</p>
+            </div>
+            <div class="lp-sign">
+              Hamesha tera — tera hi,
+              <strong>Chaitanya 🎂🩵</strong>
+              <span>"Love u the most." — hamesha 💙</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end lp-list -->
+
+      <div class="lp-footer">
+        <p>💌 6 letters · 1 love · Sirf tere liye · Chaitanya ki taraf se 🩵</p>
+      </div>
+
+    </div><!-- end letters-page-inner -->
+  </div><!-- end #pg-letters -->
+
+  <!-- ══════════════════════════════════════════════════════
+       PAGE 5 — GALLERY
+  ══════════════════════════════════════════════════════ -->
+  <div class="pg" id="pg-gallery">
+    <!-- Content: pages/gallery.html -->
+    <div class="gallery-inner">
+      <p class="eyebrow">Every picture tells the story</p>
+      <h2 class="display" style="font-size:clamp(2rem,5vw,3.2rem)">Us, in photographs</h2>
+      <div class="gold-line"></div>
+      <p class="italic-serif" style="font-size:.9rem;margin-bottom:0">The moments I keep coming back to. Click any photo to open it.</p>
+      <div class="gallery-grid" id="gallery-grid"></div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" onclick="lightboxBg(event)">
+      <button class="lb-close" onclick="closeLightbox()">✕</button>
+      <div class="lb-img-wrap">
+        <button class="lb-nav lb-prev" onclick="lbPrev()">&#8592;</button>
+        <img id="lb-img" src="" alt="" />
+        <button class="lb-nav lb-next" onclick="lbNext()">&#8594;</button>
+      </div>
+      <p id="lb-cap"></p>
+      <p class="lb-counter" id="lb-counter"></p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       PAGE 6 — GAMES HUB
+  ══════════════════════════════════════════════════════ -->
+  <div class="pg" id="pg-games">
+    <div class="hub-inner">
+      <p class="eyebrow fade-up d1">A little fun, a lot of love</p>
+      <h2 class="hub-heading fade-up d2">Mini<br>Surprises</h2>
+      <p class="hub-sub fade-up d3">Four games. Real questions. Real moments. No cheating bbbu.</p>
+
+      <div class="hub-grid fade-up d4">
+
+        <div class="hub-card" onclick="openGame('pg-quiz')">
+          <span class="hub-card-num">01</span>
+          <span class="hub-card-icon">🧠</span>
+          <div class="hub-card-name">How Well Do<br>You Know Us?</div>
+          <p class="hub-card-desc">7 questions from our real story. You lived it — let's see if you remember it.</p>
+          <span class="hub-card-arrow">→</span>
+        </div>
+
+        <div class="hub-card" onclick="openGame('pg-spin')">
+          <span class="hub-card-num">02</span>
+          <span class="hub-card-icon">🎡</span>
+          <div class="hub-card-name">Spin the<br>Wheel</div>
+          <p class="hub-card-desc">Compliments, dates, surprises — fate decides. Spin as many times as you want.</p>
+          <span class="hub-card-arrow">→</span>
+        </div>
+
+        <div class="hub-card" onclick="openGame('pg-memory')">
+          <span class="hub-card-num">03</span>
+          <span class="hub-card-icon">🃏</span>
+          <div class="hub-card-name">Memory<br>Match</div>
+          <p class="hub-card-desc">Flip cards and match pairs — each emoji is something from our story.</p>
+          <span class="hub-card-arrow">→</span>
+        </div>
+
+        <div class="hub-card" onclick="openGame('pg-guessdate')">
+          <span class="hub-card-num">04</span>
+          <span class="hub-card-icon">📅</span>
+          <div class="hub-card-name">Guess<br>the Date</div>
+          <p class="hub-card-desc">7 real moments from our story. Can you guess exactly when they happened?</p>
+          <span class="hub-card-arrow">→</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       PAGE 6a — QUIZ
+  ══════════════════════════════════════════════════════ -->
+  <div class="pg game-pg" id="pg-quiz">
+    <div class="game-inner">
+      <button class="game-back" onclick="go('pg-games')">← Back to Games</button>
+      <p class="eyebrow">Game 01</p>
+      <h2 class="game-title">How Well Do<br>You Know Us?</h2>
+      <p class="game-sub">7 questions · Real moments · No cheating bbbu</p>
+
+      <!-- progress -->
+      <div class="quiz-prog-bar-wrap">
+        <div class="quiz-prog-bar" id="quiz-prog-bar" style="width:0%"></div>
+      </div>
+      <div class="quiz-score-bar" id="quiz-score-bar"></div>
+
+      <!-- question card -->
+      <div class="quiz-card">
+        <p class="quiz-q-num" id="quiz-q-num">Question 1 of 7</p>
+        <p class="quiz-q-text" id="quiz-q-text"></p>
+        <div class="qopts" id="qopts"></div>
+      </div>
+
+      <!-- result -->
+      <div class="quiz-result-card" id="quiz-result-card">
+        <div class="quiz-result-score" id="quiz-result-score">0/7</div>
+        <p class="quiz-result-msg" id="quiz-result-msg"></p>
+        <button class="btn-restart" onclick="restartQuiz()">↻ &nbsp;Play Again</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       PAGE 6b — SPIN WHEEL
+  ══════════════════════════════════════════════════════ -->
+  <div class="pg game-pg" id="pg-spin">
+    <div class="game-inner">
+      <button class="game-back" onclick="go('pg-games')">← Back to Games</button>
+      <p class="eyebrow">Game 02</p>
+      <h2 class="game-title">Spin the<br>Wheel</h2>
+      <p class="game-sub">8 surprises · Spin as many times as you like</p>
+
+      <div class="spin-page-wrap">
+        <span style="font-size:1.3rem;color:var(--gold);margin-bottom:0.2rem;display:block">▼</span>
+        <canvas id="wcanvas" width="260" height="260"></canvas>
+        <br>
+        <button class="btn-gold" id="spinbtn" onclick="doSpin()" style="margin-top:1rem">Spin the Wheel</button>
+
+        <div class="spin-prize-display" id="spin-prize-display">
+          Your surprise will appear here ✨
+        </div>
+
+        <div class="spin-history" id="spin-history" style="display:none">
+          <p class="spin-history-label">Previous spins</p>
+          <div class="spin-history-list" id="spin-history-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       PAGE 6c — MEMORY MATCH
+  ══════════════════════════════════════════════════════ -->
+  <div class="pg game-pg" id="pg-memory">
+    <div class="game-inner">
+      <button class="game-back" onclick="go('pg-games')">← Back to Games</button>
+      <p class="eyebrow">Game 03</p>
+      <h2 class="game-title">Memory<br>Match</h2>
+      <p class="game-sub">Each emoji is something from our story — find all 8 pairs</p>
+
+      <div class="memory-stats">
+        <div class="mem-stat">
+          <div class="mem-stat-num" id="mem-moves">0</div>
+          <div class="mem-stat-lbl">Moves</div>
+        </div>
+        <div class="mem-stat">
+          <div class="mem-stat-num" id="mem-time">0s</div>
+          <div class="mem-stat-lbl">Time</div>
+        </div>
+        <div class="mem-stat">
+          <div class="mem-stat-num" id="mem-matched">0</div>
+          <div class="mem-stat-lbl">Matched</div>
+        </div>
+      </div>
+
+      <div class="memory-grid" id="memory-grid"></div>
+
+      <div class="memory-result" id="memory-result">
+        <span class="mem-win-icon">🎉</span>
+        <div class="mem-win-title" id="mem-win-title"></div>
+        <p class="mem-win-msg" id="mem-win-msg"></p>
+        <br>
+        <button class="btn-restart" onclick="restartMemory()" style="margin-top:1rem">↻ &nbsp;Play Again</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       PAGE 6d — GUESS THE DATE
+  ══════════════════════════════════════════════════════ -->
+  <div class="pg game-pg" id="pg-guessdate">
+    <div class="game-inner">
+      <button class="game-back" onclick="go('pg-games')">← Back to Games</button>
+      <p class="eyebrow">Game 04</p>
+      <h2 class="game-title">Guess<br>the Date</h2>
+      <p class="game-sub">7 real moments from our story · When did this happen?</p>
+
+      <div class="gd-prog-bar-wrap">
+        <div class="gd-prog-bar" id="gd-prog-bar" style="width:0%"></div>
+      </div>
+      <p class="gd-prog" id="gd-prog">Round 1 of 7</p>
+
+      <div class="gd-scene">
+        <div class="gd-scene-label" id="gd-scene-label"></div>
+        <p class="gd-scene-text" id="gd-scene-text"></p>
+      </div>
+
+      <div class="gd-options" id="gd-options"></div>
+      <p class="gd-feedback" id="gd-feedback"></p>
+
+      <div class="gd-result" id="gd-result">
+        <div class="gd-result-score" id="gd-result-score">0/7</div>
+        <p class="gd-result-msg" id="gd-result-msg"></p>
+        <br>
+        <button class="btn-restart" onclick="restartGuessDate()" style="margin-top:1rem">↻ &nbsp;Play Again</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       PAGE 7 — BIRTHDAY REVEAL (cinematic, emotional)
+  ══════════════════════════════════════════════════════ -->
+  <div class="pg" id="pg-reveal">
+
+    <!-- fireworks canvas -->
+    <canvas id="rv-fireworks"></canvas>
+    <!-- floating hearts layer -->
+    <div id="rv-hearts"></div>
+
+    <div class="rv-wrap">
+
+      <!-- ══ COVER SECTION ══ -->
+      <div class="rv-cover">
+        <div class="rv-stars" id="rv-stars"></div>
+        <div class="rv-cover-content">
+          <div class="rv-date-pill">29 June 2026 · Her Day</div>
+          <span class="rv-pulse-heart">💙</span>
+          <h1 class="rv-name">Khushi</h1>
+          <p class="rv-cover-sub">Chaitanya ki taraf se — poori tarah 🩵</p>
+          <div class="rv-stat-strip">
+            <span class="rv-stat-chip">04 Sep 2025 — pehla message</span>
+            <span class="rv-stat-chip">132,000+ baatein</span>
+            <span class="rv-stat-chip">300+ goodnights</span>
+            <span class="rv-stat-chip">1 rasmalai wala pyaar</span>
+          </div>
+          <div class="rv-scroll-cue">
+            <div class="rv-scroll-bar"></div>
+            <span>scroll karo</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ TYPEWRITER ══ -->
+      <div class="rv-typewriter-section rv-rv">
+        <p class="rv-tw-label">Woh jo kehna tha — aaj bol raha hoon</p>
+        <p class="rv-tw-text" id="rv-tw-text"></p><span class="rv-tw-cursor"></span>
+      </div>
+
+      <!-- ══ MEMORY TICKER ══ -->
+      <div class="rv-ticker-wrap rv-rv">
+        <div class="rv-ticker" id="rv-ticker">
+          <span class="rv-ticker-item"><span class="dot">💙</span>Class me hai kya???</span>
+          <span class="rv-ticker-item"><span class="dot">🌸</span>okiii</span>
+          <span class="rv-ticker-item"><span class="dot">💙</span>I love u as a friend 💞 (liar)</span>
+          <span class="rv-ticker-item"><span class="dot">🌸</span>tuu bndaa achaa h vaaisee 🥹</span>
+          <span class="rv-ticker-item"><span class="dot">💙</span>Muje tho passand hai.. App bato ab 🥺</span>
+          <span class="rv-ticker-item"><span class="dot">🌸</span>bbbu 🩵</span>
+          <span class="rv-ticker-item"><span class="dot">💙</span>Tune pyar hi itna kiya…</span>
+          <span class="rv-ticker-item"><span class="dot">🌸</span>gudnight bbbu. no phones. aab.</span>
+          <span class="rv-ticker-item"><span class="dot">💙</span>God gave me the perfect gift this year 🎁</span>
+          <span class="rv-ticker-item"><span class="dot">🌸</span>loce u moreee 💙</span>
+          <span class="rv-ticker-item"><span class="dot">💙</span>tune kha liya??</span>
+          <span class="rv-ticker-item"><span class="dot">🌸</span>meraaa mandak 🐸💙</span>
+          <!-- duplicate for seamless loop -->
+          <span class="rv-ticker-item"><span class="dot">💙</span>Class me hai kya???</span>
+          <span class="rv-ticker-item"><span class="dot">🌸</span>okiii</span>
+          <span class="rv-ticker-item"><span class="dot">💙</span>I love u as a friend 💞 (liar)</span>
+          <span class="rv-ticker-item"><span class="dot">🌸</span>tuu bndaa achaa h vaaisee 🥹</span>
+          <span class="rv-ticker-item"><span class="dot">💙</span>Muje tho passand hai.. App bato ab 🥺</span>
+          <span class="rv-ticker-item"><span class="dot">🌸</span>bbbu 🩵</span>
+          <span class="rv-ticker-item"><span class="dot">💙</span>Tune pyar hi itna kiya…</span>
+          <span class="rv-ticker-item"><span class="dot">🌸</span>gudnight bbbu. no phones. aab.</span>
+          <span class="rv-ticker-item"><span class="dot">💙</span>God gave me the perfect gift this year 🎁</span>
+          <span class="rv-ticker-item"><span class="dot">🌸</span>loce u moreee 💙</span>
+          <span class="rv-ticker-item"><span class="dot">💙</span>tune kha liya??</span>
+          <span class="rv-ticker-item"><span class="dot">🌸</span>meraaa mandak 🐸💙</span>
+        </div>
+      </div>
+
+      <!-- ══ MESSAGE CARDS ══ -->
+      <div class="rv-cards">
+
+        <div class="rv-card rv-card-a rv-rv">
+          <span class="rv-card-num">01</span>
+          <p class="rv-card-tag">Woh September</p>
+          <h3 class="rv-card-title">Ek roll number se shuru hua tha.</h3>
+          <div class="rv-card-body">
+            <p>4 September 2025. Maine ek roll number bheja tha — <span class="hi">2501060086</span>. Attendance ke liye. Uss waqt mujhe nahi pata tha ki yeh number meri life ka ek turning point hoga.</p>
+            <p>Ki woh <span class="hi">"okiii"</span> karne waali ladki ek din meri rasmalai, mandak, gulabjamun, babbabie, bbbu — <span class="hi">sab kuch ban jaayegi.</span></p>
+            <p>17 din. Sirf 17 din mein duniya badal gayi. Koi drama nahi tha. Koi perfect moment nahi tha. Bas ek chaotic conversation thi — aur <span class="hi">woh ek cheez jo sirf hum dono samajh sakte hain.</span></p>
+          </div>
+          <div class="rv-card-div"></div>
+        </div>
+
+        <div class="rv-card rv-card-b rv-rv d2">
+          <span class="rv-card-num">02</span>
+          <p class="rv-card-tag">132,000 baatein</p>
+          <h3 class="rv-card-title">Main teri choti chiti baatein bhi yaad rakhta hoon.</h3>
+          <div class="rv-card-body">
+            <p>Subah 6 baje ka woh "bbbu. aaraa h yh niii." Raat ko "gudnight bbbu. no phones. aab." — aur phir teen aur messages. <span class="hb">Main sab note karta raha hoon, bbbu.</span></p>
+            <p>Jab teri "haa" chhoti ho jaati hai. Jab emoji nahi aata reply mein. Jab tu seedha jawab deti hai — <span class="hb">tab main samajh jaata hoon ki andar kuch hai.</span> Kyunki 10 mahine mein maine teri language seekhi hai.</p>
+            <p>Tune kabhi Python notes banaye mere liye raat bhar. Tune "tune kha liya?" tab bhi pucha jab teri khud ki tabiyat kharab thi. <span class="hb">Tu aise deti hai jaise tujhe pata hi nahi ki yeh extraordinary hai.</span></p>
+          </div>
+          <div class="rv-card-div"></div>
+        </div>
+
+        <div class="rv-card rv-card-c rv-rv d3">
+          <span class="rv-card-num">03</span>
+          <p class="rv-card-tag">New Year · 12:49 AM</p>
+          <h3 class="rv-card-title">"God gave me the perfect gift this year."</h3>
+          <div class="rv-card-body">
+            <p>12:49 AM. Tu soi hui thi. Maine woh message bheja — <span class="hp">"God gave me the perfect gift this year 🎁✨. And u did everything for me. Love u aur ab toh words bhi nahi hai."</span></p>
+            <p>Main woh aaj bhi kehta hoon. Iss saal. Agli saal. Uske baad ki saari saalo mein. <span class="hp">Tu woh gift rahegi jo maine deserve nahi kiya par somehow mil gayi.</span></p>
+            <p>Aur tu puche ki kyun — toh main bol dunga: kyunki tune mujhe sikhaya ki ordinary din bhi precious hote hain. Ki subah 6 baje ka ek text bhi <span class="hp">ek baar ka nahi, ek promise ka hissa hota hai.</span></p>
+          </div>
+          <div class="rv-card-div"></div>
+        </div>
+
+        <div class="rv-card rv-card-d rv-rv d4">
+          <span class="rv-card-num">04</span>
+          <p class="rv-card-tag">Aaj · 29 June</p>
+          <h3 class="rv-card-title">Tu sirf meri girlfriend nahi hai.</h3>
+          <div class="rv-card-body">
+            <p>Tu meri best friend hai. Meri team hai. Mera safe place hai. Woh jagah hai jahan mujhe sirf khud hona padta hai — <span class="hg">kuch aur nahi.</span></p>
+            <p>Tune mandak bola. Rasmalai bola. Gulabjamun bola. <span class="hg">Yeh woh cheezein hain jo tu sirf un logon ko bolti hai jo teri duniya mein hain.</span> Aur main teri duniya mein hoon — yeh ehsaas koi cheez se compare nahi hoti.</p>
+            <p>Aaj tera birthday hai. Aur main chahta hoon ki aaj ka din teri life ka best day ho — <span class="hg">kyunki tu deserve karti hai sab se zyada. Hamesha se.</span></p>
+          </div>
+          <div class="rv-card-div"></div>
+        </div>
+
+      </div>
+
+      <!-- ══ PROMISE SECTION ══ -->
+      <div class="rv-promise-section rv-rv">
+        <p class="rv-promise-label">Ek vaada · Aaj · Hamesha ke liye</p>
+        <p class="rv-promise-text">
+          Main vaada karta hoon ki <span class="hi">teri "gudnight bbbu"</span> pe hamesha reply karunga —
+          chahe 5 minute baad sahi. Main vaada karta hoon ki <span class="hg">"tune kha liya?"</span> poochhta rahunga
+          — aaj bhi, agli saal bhi, uske baad bhi. Main vaada karta hoon ki <span class="hp">jab tu chup hogi,
+          tab bhi main sun rahunga.</span> Aur main vaada karta hoon ki
+          <span class="hi">teri rasmalai hamesha tere liye rahegi</span> —
+          chahe aaj nahi, toh kal sahi. 🍮
+          <br><br>
+          <em style="color:rgba(255,255,255,0.35);font-size:0.88rem">
+            "Tu meri jaan hai, bbbu. Happy Birthday. 🎂🩵"
+          </em>
+        </p>
+      </div>
+
+      <!-- ══ FINALE ══ -->
+      <div class="rv-finale rv-rv">
+        <span class="rv-finale-emoji">🎂</span>
+        <h2 class="rv-finale-title">Happy Birthday,<br>meri Khushi.</h2>
+        <p class="rv-finale-sub">
+          Aaj se ek saal aur tere saath hoga.<br>
+          Aur main ready hoon — poori tarah. 💙
+        </p>
+        <button class="rv-burst-btn" onclick="revealBurst()">
+          🎉 &nbsp;Celebrate kar bbbu!
+        </button>
+      </div>
+
+      <!-- ══ CLOSING ══ -->
+      <div class="rv-closing rv-rv">
+        Yeh website yahan khatam hoti hai.<br>Humari kahani nahi.
+        <strong>— Tera bbu, Chaitanya 🩵</strong>
+        <span style="display:block;margin-top:.3rem;font-size:0.78rem;color:rgba(255,255,255,0.15)">"Loce u the most." — hamesha 💙</span>
+      </div>
+
+    </div><!-- end rv-wrap -->
+  </div><!-- end #pg-reveal -->
+
+  <!-- (letter modal removed — letters now expand inline) -->
+
+  <!-- ══════════════════════════════════════════════════════
+       BOTTOM NAVIGATION BAR
+  ══════════════════════════════════════════════════════ -->
+  <nav id="site-nav">
+    <button data-pg="pg-story"   onclick="go('pg-story')">Story</button>
+    <button data-pg="pg-letters" onclick="go('pg-letters')">Letters</button>
+    <button data-pg="pg-gallery" onclick="go('pg-gallery')">Gallery</button>
+    <button data-pg="pg-games"   onclick="go('pg-games')">Games</button>
+    <button data-pg="pg-reveal"  onclick="go('pg-reveal')">Birthday</button>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════
+       SCRIPTS — load order matters
+  ══════════════════════════════════════════════════════ -->
+
+  <!-- 1. Content data (must load first — all other scripts depend on it) -->
+  <script src="data/content.js"></script>
+
+  <!-- 2. Core utilities -->
+  <script src="js/particles.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/countdown.js"></script>
+
+  <!-- 3. Feature scripts -->
+  <script src="js/quiz.js"></script>
+  <script src="js/wheel.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/story.js"></script>
+  <script src="js/memory.js"></script>
+  <script src="js/guessdate.js"></script>
+  <script src="js/reveal.js"></script>
+
+  <!-- 4. Page bootstrap (inline — wires everything together) -->
+  <script>
+    // ── Password check ────────────────────────────────────
+    function checkPw() {
+      const val = document.getElementById('pw-in').value.trim().toLowerCase();
+      if (val === CONFIG.password.toLowerCase()) {
+        unlockSite();
+      } else {
+        const err = document.getElementById('pw-err');
+        err.textContent = "That's not quite it, love. Try again 🌸";
+        document.getElementById('pw-in').value = '';
+        setTimeout(() => err.textContent = '', 2500);
+      }
+    }
+    document.getElementById('pw-in').addEventListener('keydown', e => {
+      if (e.key === 'Enter') checkPw();
+    });
+
+    // ── Story chapters are now static HTML in #pg-story ──
+
+    // ── Letter accordion (inline expand, no modal) ────────
+    function lpToggle(id) {
+      const card = document.getElementById(id);
+      const wasOpen = card.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.lp-card').forEach(c => c.classList.remove('open'));
+      // Open clicked if it wasn't already open
+      if (!wasOpen) {
+        card.classList.add('open');
+        setTimeout(() => {
+          card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 80);
+      }
+    }
+
+    // ── Letters accordion ─────────────────────────────────
+    function lpToggle(id) {
+      const card = document.getElementById(id);
+      const wasOpen = card.classList.contains('open');
+      document.querySelectorAll('.lp-card').forEach(c => c.classList.remove('open'));
+      if (!wasOpen) {
+        card.classList.add('open');
+        setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+      }
+    }
+
+    // ── Reveal page content is now static HTML ─────────────
+    // (initReveal removed — no placeholder IDs needed)
+
+    // ── openGame: navigate to a game sub-page & init it ───
+    const GAME_INITS = {
+      'pg-quiz':      () => initQuizPage(),
+      'pg-spin':      () => { initWheel(); },
+      'pg-memory':    () => initMemory(),
+      'pg-guessdate': () => initGuessDate(),
+    };
+    const GAME_PAGES = ['pg-quiz','pg-spin','pg-memory','pg-guessdate'];
+
+    function openGame(id) {
+      go(id);
+      setTimeout(() => { if (GAME_INITS[id]) GAME_INITS[id](); }, 650);
+    }
+
+    // ── INIT ALL ──────────────────────────────────────────
+    initParticles();
+    initCountdown();
+    initDailyMessage();
+    initLockButton();
+    // Letters are now static HTML with inline accordion (lpToggle)
+    initGallery();
+    initWheel();
+
+    // Hook story page init/destroy + reveal page init into go()
+    const _goOriginal = go;
+    window.go = function(id, instant) {
+      if (currentPage === 'pg-story' && id !== 'pg-story') destroyStoryPage();
+      _goOriginal(id, instant);
+      if (id === 'pg-story')  { setTimeout(initStoryPage,  instant ? 0 : 650); }
+      if (id === 'pg-reveal') { setTimeout(initRevealPage, instant ? 0 : 650); }
+    };
+    window.unlockSite = function() {
+      document.getElementById('site-nav').style.display = 'flex';
+      go('pg-story');
+    };
+  </script>
+
+</body>
+</html>

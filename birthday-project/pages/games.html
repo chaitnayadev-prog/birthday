@@ -1,0 +1,47 @@
+<!-- ============================================================
+     pages/games.html
+     PAGE 6 — Mini Surprises (Quiz + Spin Wheel)
+     Quiz questions → data/content.js → QUIZ array
+     Spin prizes   → data/content.js → SPIN_PRIZES array
+     Edit heading / subtitle below directly.
+============================================================ -->
+
+<div class="games-inner">
+
+  <p class="eyebrow">A little fun, a lot of love</p>
+
+  <h2 class="display" style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1.5rem">
+    Mini Surprises
+  </h2>
+
+  <!-- ── Tabs ── -->
+  <div class="gtabs">
+    <button class="gtab on" onclick="switchTab('quiz', this)">Quiz</button>
+    <button class="gtab"    onclick="switchTab('spin', this)">Spin the Wheel</button>
+  </div>
+
+  <!-- ── Quiz Panel ── -->
+  <div class="gpanel on" id="gp-quiz">
+    <p class="quiz-prog" id="qprog"></p>
+    <p class="quiz-q"    id="qq"></p>
+    <div class="qopts"   id="qopts"></div>
+    <div class="quiz-result" id="qres"></div>
+    <button class="btn-gold" id="qstart" onclick="startQuiz()" style="margin-top: 1.5rem">
+      Begin Quiz
+    </button>
+  </div>
+
+  <!-- ── Spin Wheel Panel ── -->
+  <div class="gpanel" id="gp-spin">
+    <div class="spin-wrap">
+      <span class="spin-arrow-w">▼</span>
+      <canvas id="wcanvas" width="260" height="260"></canvas>
+      <br>
+      <button class="spin-btn" id="spinbtn" onclick="doSpin()">
+        Spin the Wheel
+      </button>
+      <p class="spin-out" id="spinout"></p>
+    </div>
+  </div>
+
+</div>

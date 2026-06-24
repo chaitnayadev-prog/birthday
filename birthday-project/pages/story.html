@@ -1,0 +1,27 @@
+<!-- ============================================================
+     pages/story.html
+     PAGE 3 — Our Story
+     Chapters are built dynamically from data/content.js
+     → STORY_CHAPTERS array. Edit the text there.
+     You can edit the left-panel intro text below directly.
+============================================================ -->
+
+<div class="story-layout">
+
+  <!-- ── Left panel: sticky title ── -->
+  <div class="story-left">
+    <p class="eyebrow">Chaitanya &amp; Khushi · Sept 2025 → June 2026</p>
+    <h2 class="display story-display">Our<br>Story</h2>
+    <div class="gold-line"></div>
+    <p class="story-intro">
+      It started with attendance. 132,000 messages later — here we are.
+      Six chapters. All of them true. Click any one to read it.
+    </p>
+  </div>
+
+  <!-- ── Right panel: expandable chapters (built by JS) ── -->
+  <div class="story-right" id="story-chapters">
+    <!-- Populated by initStory() in index.html script -->
+  </div>
+
+</div>
