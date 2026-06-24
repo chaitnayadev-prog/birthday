@@ -6,8 +6,8 @@
 
 // ── BASIC CONFIG ────────────────────────────────────────────
 const CONFIG = {
-  password:  "",                   // ← Their nickname 🍮
-  birthday:  "2026-06-23:00:00+05:30", // ← Khushi's birthday IST
+  password:  "dddddddddddddddd",                   // ← Their nickname 🍮
+  birthday:  "2026-06-29:00:00+05:30", // ← Khushi's birthday IST
   herName:   "Khushi",
   yourName:  "Tera bbu, Chaitanya 🩵",
 };
